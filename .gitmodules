@@ -7,3 +7,6 @@
 [submodule "TrueXOR/lib/forge-std"]
 	path = TrueXOR/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "Pelusa/lib/forge-std"]
+	path = Pelusa/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
