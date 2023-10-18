@@ -28,3 +28,6 @@
 [submodule "InvestPool/lib/forge-std"]
 	path = InvestPool/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "InvestPool/lib/openzeppelin-contracts"]
+	path = InvestPool/lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
