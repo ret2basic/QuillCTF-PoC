@@ -21,7 +21,7 @@ contract GoldNFT is ERC721("GoldNFT", "GoldNFT") {
 
         if (!minted) {
             lastTokenId++;
-            _safeMint(msg.sender, lastTokenId); // @audit-issue
+            _safeMint(msg.sender, lastTokenId); // @audit-issue reentrancy
             minted = true;
         } else revert("already minted");
     }
