@@ -40,3 +40,6 @@
 [submodule "WETH11/lib/forge-std"]
 	path = WETH11/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "WETH11/lib/openzeppelin-contracts"]
+	path = WETH11/lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
