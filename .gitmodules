@@ -34,3 +34,6 @@
 [submodule "GoldNFT/lib/forge-std"]
 	path = GoldNFT/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "GoldNFT/lib/openzeppelin-contracts"]
+	path = GoldNFT/lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
